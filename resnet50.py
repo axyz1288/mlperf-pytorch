@@ -13,10 +13,7 @@ class ResNet50(nn.Module):
 
     def __init__(self, **kwargs):
         super(ResNet50, self).__init__()
-        self.model = resnet50(num_classes=1001, **kwargs)
-
-    def load_state_dict(self, state_dict: OrderedDict[str, Tensor], strict: bool = True):
-        self.model.load_state_dict(state_dict['state_dict'], strict=strict)
+        self.model = resnet50(num_classes=1000, pretrained=True, **kwargs)
 
     def forward(self, x):
         return self.model(x)
